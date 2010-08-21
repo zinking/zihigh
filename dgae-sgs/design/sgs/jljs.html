@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>三国杀记录</title>
+
+<link href="scripts/mstyle.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="scripts/jquery.js"></script>
+
+<script type="text/javascript">
+	 $( document ).ready( function() {
+	 
+		
+	 });
+	 
+	 function getWuJiangList( e, dom ){
+		var gj = $(dom).val();
+		if( gj == "select" ) return;
+		var wjdom = $('#'+gj).clone();
+		wjdom.attr('id','');
+		$(dom).replaceWith( wjdom );
+	 }
+	 function returnRoleSelect( e, dom ){
+		var gj = $(dom).val();
+		if( gj != "return" ) return;
+		var roledom = $('#roleselect').clone();
+		roledom.attr('id','');
+		$(dom).replaceWith( roledom );
+	 }
+</script>
+</head>
+
+<body >
+
+
+
+<div class="menu">
+	<div class="group1">
+    	<p>
+        	<span class="label">姓名</span>
+            <span class="label">身份</span>
+            <span class="label">武将</span>
+            <span class="label">被杀</span>
+            <span class="label">判定</span>
+            <span class="label">英雄技能</span>
+        </p>
+        <p>
+        	<span class="label">张智勇</span>
+            <span class="label"><select name="role" >
+                <option value="主公" selected="true">主公</option>
+                <option value="忠臣">忠臣</option>
+                <option value="内奸">内奸</option>
+                <option value="反贼">反贼</option>         
+			</select></span>
+            <span class="label"><select name="shili" onChange="getWuJiangList( event, this)">
+				<option value="select" selected="true">势力</option>
+                <option value="weiguo">魏国</option>
+                <option value="shuguo">蜀国</option>
+                <option value="wuguo" >吴国</option> 
+				<option value="qunxiong">群雄</option>
+			</select></span>
+            <span class="label"><select name="killby" >
+                <option value="P1" selected="true">魏国</option>
+                <option value="蜀国">蜀国</option>
+                <option value="吴国">吴国</option> 
+				<option value="群雄">群雄</option>
+			</select></span>
+            <span  class="label"><select name="panding">
+                <option value="lbss" selected="true">乐不思蜀</option>
+                <option value="blcd">兵粮寸断</option>
+                <option value="sd">闪电</option>
+                <option value="bg">八卦</option              
+			</select></span>
+        	<span class="label"><input type=submit value="技能"/></span>
+		</p>
+      
+
+            <input type=submit value="确定"/><input type=reset>
+		</form>
+
+        
+		 <p>
+        	<span class="label">张智勇</span>
+            <span class="label">乐不思蜀</span>
+           
+            <span class="label"><select >
+                <option value="z" selected="true">中</option>
+                <option value="mz">没中</option>
+            </select></span>
+            <span class="label"><select >
+                <option value="gz" selected="true">改中</option>
+                <option value="mgz">没改中</option>
+                <option value="mgz">没改</option>
+                
+            </select></span>
+            
+            
+        	<span class="label"><input type=submit value="确定"/></span>
+            <span class="label"><input type=submit value="取消"/></span>
+        </p>
+		
+		<div style="display:none;">
+			<select id="wuguo" name="wujiang" onchange="returnRoleSelect(event,this)">
+                <option value="wg1" selected="true">WG1</option>
+                <option value="wg2">WG2</option>
+                <option value="wg3">WG3</option>
+                <option value="wg4">WG4</option>
+				<option value="return" > return </option>
+			</select>
+			<select id="weiguo" name="wujiang" onchange="returnRoleSelect(event,this)">
+                <option value="wg1" selected="true">WG1</option>
+                <option value="wg2">WG4</option>
+                <option value="wg3">WG5</option>
+                <option value="wg4">WG5</option>
+				<option value="return" > return </option>
+			</select>
+			<select id="shuguo" name="wujiang" onchange="returnRoleSelect(event,this)">
+                <option value="sg1" selected="true">SG1</option>
+                <option value="sg2">SG2</option>
+                <option value="sg3">SG3</option>
+                <option value="sg4">SG4</option>
+				<option value="return" > return </option>
+			</select>
+			<select id="qunxiong" name="wujiang" onchange="returnRoleSelect(event,this)">
+                <option value="qx1" selected="true">QX1</option>
+                <option value="qx2">QX2</option>
+                <option value="qx3">QX3</option>
+                <option value="qx4">QX4</option>
+				<option value="return" onclick="returnRoleSelect(event,this)"> return </option>
+			</select>
+			<select id="roleselect" onChange="getWuJiangList( event, this)">
+				<option value="select" selected="true">势力</option>
+                <option value="weiguo">魏国</option>
+                <option value="shuguo">蜀国</option>
+                <option value="wuguo" >吴国</option> 
+				<option value="qunxiong">群雄</option>
+			</select>
+		</div>
+       
+    </div>
+</div>
+</body>
+</html>

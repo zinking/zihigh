@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>三国杀记录</title>
+
+<link href="/media/scripts/mstyle.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/media/scripts/jquery.js"></script>
+
+<script type="text/javascript">
+	 $( document ).ready( function() {
+	 
+		String.prototype.format = function() {
+			var txt = this,
+				i = arguments.length;
+
+			while (i--) {
+				txt = txt.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+			}
+			return txt;
+		};
+
+		$('#igroup').change( function(){
+			pdata={};
+			pdata['group'] = $('#igroup').val();
+			var server_url = '/sgs/getPlayersByGroup/';
+			$.ajax({
+                    url: server_url,
+                    type:'POST',
+                    data: pdata,
+                    dataType:'json',
+                    timeout: 3000,
+                    error: function( xhr, ajaxOptions, thrownErrors  ){
+                        alert("出现网络错误，请重试。");
+                    },
+                    success: function(msg){	
+						$('#players').empty();
+						if( msg.result ){
+							//$('#mycon').html( msg.html );
+							var plist = msg.players;
+							myhtml = "";
+							
+							$.each( plist, function( index,value){
+								dom = '<p><input  name="{0}" type="checkbox" value="{2}"/><label class="label" for="{0}">{1}</label></p>'.format( 'p'+index.toString(), value.name.toString(), value.id.toString() ); 
+								myhtml += dom;
+								//myhtml += "<p><input  name='p" + index.toString() + "' type='checkbox' value='"+value+"' /><label class='label' >"+value+" </label></p>';
+							});
+							//myhtml += "<input type='submit' value='OK'><input type='reset'>";
+							$('#players').html( myhtml );
+						}
+                    }
+            });
+		});
+	 });
+</script>
+
+</head>
+
+<body >
+
+<div class="menu">
+	<div class="group">
+    	
+    	<select id="igroup" name="group" style="font-size:1.1em;width:150px;">
+				<option value="NotSelected" selected="true">Select a group</option>
+		{% for group in groups %}
+                <option value="{{group.name}}" >{{group.name}}</option>            
+        {% endfor %}     
+        </select>
+       
+    </div>
+</div>
+
+<div class="menu">
+	<div class="group">
+    	<form  action='/sgs/start_newgame/' method='POST'>{% csrf_token %}
+			<!-- <p><input  name="p1" type=checkbox value=""/><label class="label" for="p1">张智勇</label></p> -->
+            <div id="players">
+			</div>
+			<input type='submit' value='OK'><input type='reset'>
+            
+		</form>  
+    </div>
+</div>
+</body>
+</html>

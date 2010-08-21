@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>三国杀记录</title>
+
+<link href="/media/scripts/mstyle.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/media/scripts/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="/media/scripts/jquery.json.js"></script>
+<script type="text/javascript">
+	var player_records = {};
+	var game_record={};
+	 $( document ).ready( function() {
+		String.prototype.format = function() {
+			var txt = this,
+				i = arguments.length;
+			while (i--) {
+				txt = txt.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+			}
+			return txt;
+		};
+
+	 });
+	 
+	 function getWuJiangList( e, dom ){
+		var gj = $(dom).val();
+		if( gj == "select" ) return;
+		var wjdom = $('#'+gj).clone();
+		wjdom.attr('id','');
+		$(dom).replaceWith( wjdom );
+	 }
+	 function returnRoleSelect( e, dom ){
+		var gj = $(dom).val();
+		if( gj != "return" ) return;
+		var roledom = $('#roleselect').clone();
+		roledom.attr('id','');
+		$(dom).replaceWith( roledom );
+	 }
+	 
+	 function getPlayerRecords(  ){
+		var ps = $('#player_section p');
+		var records = {};
+		var roundcounter = parseInt( $('#roundcounter').html() );
+		$.each( ps, function(index,value){
+			var id = parseInt ( $( '.pid', $(value) ).html() );
+			var prid = parseInt ( $( '.prid', $(value) ).html() );
+			var role = $('select[name=role]', $(value) ).val();
+			var wujiang = $('select[name=wujiang]', $(value) ).val();
+			if( wujiang == null ) wujiang = "not selected";
+
+			var killby = $('select[name=killby]', $(value) ).val();
+			
+			var srounds = $('b.sround', $(value) ).html();
+			var nsrounds = -1;
+			if( srounds == '')nsrounds = -1;
+			else nsrounds = parseInt(srounds);
+			if( killby == 'select' ) killby = '-1';
+			//else records['srounds'] = roundcounter;
+			
+			var game_win_role = $('#resultrole').val();
+			player_result = 'No result yet';
+			if( game_win_role != 'NONE' ) {
+				if( game_win_role == role ) player_result='win';
+				else if( game_win_role == "主公/忠臣" && (role=="主公" || role=="忠臣") ) player_result = 'win';
+				else player_reslut = 'lose';
+			}
+			records[id] = {
+				'id':id,
+				'prid':prid,
+				'role':role,
+				'wujiang':wujiang,
+				'killby':killby,
+				'result':player_result,
+				'srounds':nsrounds
+			}
+		});
+		
+		//alert( records );
+		player_records = records;
+		return records;
+		
+	 }
+	 
+	 function getGameRecords( bEndgame ){//depends on the player_records
+		var grecord={};
+		grecord['id'] = parseInt( $('#gameid').val() );
+		playerlist = [];rolelist=[];wujianglist=[];
+		for ( pid in player_records ) {
+			playerlist.push( player_records[pid]['id'] );
+			rolelist.push( player_records[pid]['role'] );
+			wujianglist.push( player_records[pid]['wujiang'] );
+		}
+		grecord['playerlist'] 	= playerlist;
+		grecord['rolelist'] 	= rolelist;
+		grecord['wujianglist'] 	= wujianglist;
+		var roundcounter = parseInt( $('#roundcounter').html() );
+		grecord['round'] = roundcounter;
+		
+		var game_win_role = $('#resultrole').val();
+		if( game_win_role != 'NONE' ) grecord['result'] = game_win_role +' win';
+		else grecord['result'] = 'NO RESULT YET';
+		//grecord['end'] = false;
+		grecord['end'] = bEndgame;
+		//alert( grecord );
+		game_record = grecord;
+		return grecord;
+	 }
+	 
+	 function inc( event, dom ){
+		var counter = parseInt( $(dom).html() );
+		counter++;
+		$(dom).html( counter.toString() );
+	 }
+	 
+	 function onPlayerKilled( event, dom ){
+		if( $(dom).val() == 'select' ) return;
+		var counter = parseInt( $('#roundcounter').html() );
+		$( 'b.sround' , $(dom).parent() ).html( counter.toString() );
+	 }
+
+	 function save_game( bEndgame ){
+		pdata={};
+		pdata['records'] = $.toJSON ( getPlayerRecords() );
+		pdata['game'] = $.toJSON( getGameRecords( bEndgame ) );
+		if( bEndgame ) pdata['pd'] = $.toJSON( getPandingRecords() );
+		var server_url = '/sgs/save_game/';
+		$.ajax({
+				url: server_url,
+				type:'POST',
+				data: pdata,
+				dataType:'json',
+				timeout: 3000,
+				error: function( xhr, ajaxOptions, thrownErrors  ){
+					alert("出现网络错误，请重试。");
+				},
+				success: function(msg){	
+					$('#players').empty();
+					if( msg.result ){
+						alert('game state successfully saved');
+						location.reload();
+					}
+				}
+		});
+	 }
+	 
+	 function removePD(event, dom){
+		$(dom).parent().remove();
+	 }
+	 
+	 function addPDRecord(event,dom){
+		if( $(dom).val() == 'select' ) return;
+		var ppdom = $(dom).parent().parent();
+		var prid = $('span.prid', ppdom ).html();
+		var pdname = $(dom).val();
+		var pname = $('span.pname', ppdom).html();
+		var pddom = $('#pandingsample').clone().html().format( pname, prid, pdname );
+		$('#panding_section').append( pddom );
+	 }
+	 
+	 function getPandingRecords( ){
+		var pdrecords = {};
+		var pdlist = $('p', $('#panding_section') );
+		$.each( pdlist, function(index,value){
+			var apd = {};
+			var pname = $( 'span.pname', $(value)).html();
+			var prid  = parseInt( $( 'span.prid', $(value)).html() );
+			var pdname = $( 'span.pname', $(value)).html();
+			var pdr = $( 'select[name=r]', $(value) ).val();
+			var gprid = $('select[name=p]', $(value) ).val();
+			if ( gprid == 'select' ) gprid = -1;
+			else gprid = parseInt( gprid );
+			var gpr = $( 'select[name=gr]', $(value) ).val();
+
+			var key = prid+pdname;
+			if( pdrecords[key] == null ){
+				obj = {'prid':prid, 'name':pdname, 'hit':0, 'nhit':0, 'rhitby':[], 'rnhitby':[] };
+				if( pdr == 'z' ) obj['hit'] = 1;
+				else obj['nhit'] = 1;
+				if( gpr == 'gz' ){
+					obj['rhitby'].push( gprid );
+				}
+				else if ( gpr == 'mgz' ) obj['rnhitby'].push( gprid );
+				pdrecords[key] = obj;
+			}
+			else{
+				obj = pdrecords[key];
+				if( pdr == 'z' ) obj['hit'] += 1;
+				else obj['nhit'] += 1;
+				if( gpr == 'gz' ){
+					obj['rhitby'].push( gprid );
+				}
+				else if ( gpr == 'mgz' ) obj['rnhitby'].push( gprid );
+				pdrecords[key] = obj;
+			}
+		});
+		
+		return pdrecords;
+	 }
+	 </script>
+</head>
+
+<body >
+
+
+
+<div class="menu">
+	<div class="group1">
+		<form   >
+    	<p>
+        	<span class="label">姓名</span>
+            <span class="label">身份</span>
+            <span class="label">武将</span>
+            <span class="label">被杀</span>
+            <span class="label">判定</span>
+            <span class="label">英雄技能</span>
+        </p>
+		<div id="player_section">
+		{% for player in plist %}
+        <p>
+        	<span class="label pname">{{player.name}}</span>
+			<span class="pid" style="display:none;">{{player.id}}</span>
+			<span class="prid" style="display:none;">{{player.prid}}</span>
+            <span class="label"><select name="role" >
+				<option value="unkown" selected="true">unkown</option>
+                <option value="主公">主公</option>
+                <option value="忠臣">忠臣</option>
+                <option value="内奸">内奸</option>
+                <option value="反贼">反贼</option>         
+			</select></span>
+            <span class="label"><select name="shili" onChange="getWuJiangList( event, this)">
+				<option value="select" selected="true">势力</option>
+                <option value="weiguo">魏国</option>
+                <option value="shuguo">蜀国</option>
+                <option value="wuguo" >吴国</option> 
+				<option value="qunxiong">群雄</option>
+			</select></span>
+            <span class="label"><select name="killby" onchange="onPlayerKilled( event,this) " >
+				<option value="select" selected="true">Select</option>
+				{% for player in plist %}
+				<option value="{{player.id}}">{{player.name}}</option>
+				{% endfor %}           
+			</select><b class="sround" style="display:none;">0</b></span>
+            <span  class="label"><select name="panding" onchange="addPDRecord(event,this)">
+				<option value="select"   selected="true">select</option>
+				<option value="乐不思蜀" >乐不思蜀</option>
+				<option value="兵粮寸断">兵粮寸断</option>
+				<option value="闪电">闪电</option>
+				<option value="八卦">八卦</option              
+			</select></span>
+        	<span class="label"><input type=submit value="技能"/></span>
+		</p>
+		{% endfor %}
+		</div>
+		
+			<div>Round:<span id="roundcounter" style="font-size:1.5em;" onclick="inc(event,this)">0</span</div>
+			<input id="gameid" type="hidden" name="gid" value="{{game.id}}" />
+            <input type="button" value="确定" onclick="save_game( false )"/><input type="reset">
+	</form>
+	
+	
+		<div>
+			<h1>GameResult:<span ><select id="resultrole" onchange=""  >
+				<option value="NONE" selected="true">请选择</option>
+                <option value="主公/忠臣">主公/忠臣</option>        
+                <option value="内奸">内奸</option>
+                <option value="反贼">反贼</option>
+		</select></span>WIN <input type="button" value="确认结束游戏" onclick="save_game( true )" /> </h1>
+		</div>
+	
+	
+        <div id="panding_section">
+		 
+		</div>
+		
+		
+		
+		
+
+		<div style="display: none;">
+			<select onchange="returnRoleSelect(event,this)" name="wujiang" id="wuguo">
+                <option selected="true" value="wg1">WG1</option>
+                <option value="wg2">WG2</option>
+                <option value="wg3">WG3</option>
+                <option value="wg4">WG4</option>
+				<option value="return"> return </option>
+			</select>
+			<select onchange="returnRoleSelect(event,this)" name="wujiang" id="weiguo">
+                <option selected="true" value="wg1">WG1</option>
+                <option value="wg2">WG4</option>
+                <option value="wg3">WG5</option>
+                <option value="wg4">WG5</option>
+				<option value="return"> return </option>
+			</select>
+			<select onchange="returnRoleSelect(event,this)" name="wujiang" id="shuguo">
+                <option selected="true" value="sg1">SG1</option>
+                <option value="sg2">SG2</option>
+                <option value="sg3">SG3</option>
+                <option value="sg4">SG4</option>
+				<option value="return"> return </option>
+			</select>
+			<select onchange="returnRoleSelect(event,this)" name="wujiang" id="qunxiong">
+                <option selected="true" value="qx1">QX1</option>
+                <option value="qx2">QX2</option>
+                <option value="qx3">QX3</option>
+                <option value="qx4">QX4</option>
+				<option onclick="returnRoleSelect(event,this)" value="return"> return </option>
+			</select>
+			<select onchange="getWuJiangList( event, this)" id="roleselect">
+				<option selected="true" value="select">势力</option>
+                <option value="weiguo">魏国</option>
+                <option value="shuguo">蜀国</option>
+                <option value="wuguo">吴国</option> 
+				<option value="qunxiong">群雄</option>
+			</select>
+		</div>
+			
+		
+		<div style="display:none;">
+			<select id="wuguo" name="wujiang" onchange="returnRoleSelect(event,this)">
+                <option value="wg1" selected="true">WG1</option>
+                <option value="wg2">WG2</option>
+                <option value="wg3">WG3</option>
+                <option value="wg4">WG4</option>
+				<option value="return" > return </option>
+			</select>
+			<select id="weiguo" name="wujiang" onchange="returnRoleSelect(event,this)">
+                <option value="wg1" selected="true">WG1</option>
+                <option value="wg2">WG4</option>
+                <option value="wg3">WG5</option>
+                <option value="wg4">WG5</option>
+				<option value="return" > return </option>
+			</select>
+			<select id="shuguo" name="wujiang" onchange="returnRoleSelect(event,this)">
+                <option value="sg1" selected="true">SG1</option>
+                <option value="sg2">SG2</option>
+                <option value="sg3">SG3</option>
+                <option value="sg4">SG4</option>
+				<option value="return" > return </option>
+			</select>
+			<select id="qunxiong" name="wujiang" onchange="returnRoleSelect(event,this)">
+                <option value="qx1" selected="true">QX1</option>
+                <option value="qx2">QX2</option>
+                <option value="qx3">QX3</option>
+                <option value="qx4">QX4</option>
+				<option value="return" onclick="returnRoleSelect(event,this)"> return </option>
+			</select>
+			<select id="roleselect" onChange="getWuJiangList( event, this)">
+				<option value="select" selected="true">势力</option>
+                <option value="weiguo">魏国</option>
+                <option value="shuguo">蜀国</option>
+                <option value="wuguo" >吴国</option> 
+				<option value="qunxiong">群雄</option>
+			</select>
+			<div id="pandingsample">
+				<p>
+					<span class="label pname">{0}</span>
+					<span class="prid" style="display:none;">{1}</span>
+					<span class="label pdname">{2}</span>
+				   
+					<span class="label"><select name="r" >
+						<option value="z" selected="true">中</option>
+						<option value="mz">没中</option>
+					</select></span>
+					
+					<span class="label"><select name="p">
+						<option value="select" selected="true">Select</option>
+						{% for player in plist %}
+						<option value="{{player.prid}}">{{player.name}}</option>
+						{% endfor %}           
+					</select></span>
+					<span class="label"><select name="gr">
+						<option value="gz" >改中</option>
+						<option value="mgz">没改中</option>
+						<option value="mg" selected="true">没改</option>
+					</select></span>
+					<span class="label" onclick="removePD(event,this)"><input type=submit value="取消"/></span>
+				</p>
+			</div>
+		</div>
+       
+    </div>
+</div>
+</body>
+</html>
