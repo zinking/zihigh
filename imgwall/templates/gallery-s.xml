@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<gallery frameColor="0xFFFFFF" frameWidth="15" imagePadding="20" displayTime="6" enableRightClickOpen="true">
+<image>
+   <url>http://newhost.byhh.net/f/Picture/1282458320/1.jpg</url>
+   <caption><![CDATA[<font size="50">Example Gallery</font><br>An example large format <u><a href="http://www.airtightinteractive.com/projects/autoviewer">AutoViewer</a></u> gallery.]]></caption>
+   <width>700</width>
+   <height>465</height>
+</image>
+<image>
+   <url>http://bbs.tongji.edu.cn/att.php?p.171.32669.182172.jpg</url>
+   <caption>Pellentesque turpis leo, dignissim ac, vestibulum quis, hendrerit quis, enim.</caption>
+   <width>465</width>
+   <height>700</height>
+</image>
+<image>
+   <url>http://bbs.nju.edu.cn/file/Pictures/d15c20a0.jpg</url>
+   <caption><![CDATA[Captions can be HTML formatted. Supported tags are <b>bold</b>, <u>underline</u>, <i>italics</i>, <u><a href="http://www.google.com" target="_blank">hyperlinks</a></u>, linebreaks<br> and <font color="#ffff00" size="60">font tags</font>.]]></caption>
+   <width>700</width>
+   <height>465</height>
+</image>
+<image>
+   <url>images/tall.jpg</url>
+   <caption>Images can be tall...</caption>
+   <width>465</width>
+   <height>700</height>
+</image>
+<image>
+   <url>images/wide.jpg</url>
+   <caption>...or wide.</caption>
+   <width>700</width>
+   <height>465</height>
+</image>
+<image>
+   <url>images/tall.jpg</url>
+   <caption>Gallery resizes to fit browser window.</caption>
+   <width>465</width>
+   <height>700</height>
+</image>
+<image>
+   <url>images/wide.jpg</url>
+   <caption><![CDATA[Supports non-english characters<br><br>サイトのコンテンツを活用して広告収入を得ることが可能です。サイト訪問者に、内容に関連]]></caption>
+   <width>700</width>
+   <height>465</height>
+</image>
+</gallery>

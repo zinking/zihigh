@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<gallery frameColor="0xFFFFFF" frameWidth="15" imagePadding="20" displayTime="3" enableRightClickOpen="true">
+{% for p in pics %}
+<image>
+   <url>{{p.url}}</url>
+   <caption><![CDATA[ {{p.title}} ]]></caption>
+   <width>300</width>
+   <height>300</height>
+</image>
+    {% endfor %}
+</gallery>
