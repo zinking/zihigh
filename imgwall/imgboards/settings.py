@@ -32,11 +32,11 @@ BbsBoardParseConfig = [
 { 'bbs':'fdu', 'schoolname':u'日月光华', 
     'config':{
 	'usp':'http://bbs.fudan.edu.cn/bbs/tdoc?bid=11',
-	'pup':'http://www.byhh.net/cgi-bin/bbstcon?board=Picture&file=M.%s.A',
-	'repage':'<a href=bbstcon\?board=Picture\&file=M.(.*?).A\&start=.*?>(.*?)</a>',
-	'ifp':'http://newhost.byhh.net/f/Picture/%s/%s.jpg',
-	'reimg':'http://byhh.net/f/Picture/(.*?)/(.*?).jpg',
-    'reimggp':[1,2],
+	'pup':'http://bbs.fudan.edu.cn/bbs/tcon?bid=11&f=%s',
+	'repage':"<po .*?m='\+' owner='.*?' time= '.*?' id='(.*?)'>(.*?)</po>",
+	'ifp':'http://bbs.fudan.edu.cn/upload/PIC/%s.jpg',
+	'reimg':'http://bbs.fudan.edu.cn/upload/PIC/(.*?).(jpg|JPG)',
+    'reimggp':[1],
     }
 },
 

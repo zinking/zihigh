@@ -36,3 +36,10 @@ helloworld();
 print context
 
 
+
+s = '.jpg .JPG .png ';
+p = '.(jpg|JPG|png)';
+mm  =  re.finditer( p, s);
+for m in mm:
+    print m.group(0,1);
+
