@@ -30,7 +30,7 @@ class Command(BaseCommand):
             except Exception,e:
                 print 'no such bbs pic board';
                 return;
-            parser.parseImageConifgedPageList( c.toDict() ,c );
+            parser.parseImageConfig( c.toDict() ,c );
             
 
         

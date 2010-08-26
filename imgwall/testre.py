@@ -2,44 +2,15 @@
 import re;
 
 
-s = """
-<a href="bbstcon,board,PPPerson,reid,1282398431.html">lkjljldjflajldj </a>
-<a href="bbstcon,board,PPPerson,reid,1282398ss431.html">lkjljlss板主flajldj</a>
-<a href="bbstcon,board,PPPerson,reid,1282398ss431.html">lkjljlssdjflajldj </a>"""
 
-
-ss= '<IMG SRC="/file/PPPerson/128211482773972.jpg" onload="if(this.width > screen.width - 200){this.width = screen.width - 200}>';
-sss="""
-<td>Aug 24<td><a href=bbstcon?board=Picture&file=M.1282618207.A&start=614>○                           自然，不自然 </a><td>""";
-
-
-p = '<a href=bbstcon\?board=Picture\&file=M.(.*?).A\&start=.*?>(.*?)</a>';
-
-pp = 'file';
-    
-msss = re.finditer( p, sss );
-paramlist = [1,2];
-for m in msss:
-    print m.group(*paramlist);
-    
-print 'finishing the job';
 
 
 s = """
-context = {"a":1}
-def helloworld():
-    print 'hello world';
+attach('1.jpg', 121003, 247);attach('jia.jpg', 60884, 121268);attach('佳2.jpg', 76063, 182172);attach('559689820070514221651062_9_640.jpg', 239662, 258255);attach('_MG_4338副本.jpg', 373973, 497964);attach('77.jpg', 305928, 871966);attach('IMG_0690-1.jpg', 100589, 1177913);attach('DSC_0048.jpg', 188655, 1278529);o.h(0);o.t();';
 """
-
-exec(s);
-helloworld();
-print context
-
-
-
-s = '.jpg .JPG .png ';
-p = '.(jpg|JPG|png)';
+p = "attach\('.*?', .*?, (.*?)\);";
 mm  =  re.finditer( p, s);
+ll = [0,];
 for m in mm:
-    print m.group(0,1);
+    print m.group( *ll );
 

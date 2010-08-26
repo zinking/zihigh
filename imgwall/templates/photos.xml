@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <photos>
     {% for p in pics %}
-    <photo desc="{{p.title}} " url="{{p.url}}" />
+    <photo desc="{{p.title}} " url="{{p.url}}" purl="{{p.purl}}" />
     {% endfor %}
 </photos>

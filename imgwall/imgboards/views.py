@@ -26,8 +26,7 @@ def vpics( request,  template='bbs-template.html', extra_context=None):
     ilps = ImgLinkPage.objects.all();
     total_img_count = len( ilps );
     tgc = 100;
-    gc = int ( len(ilps) * 0.8 );
-    chosen_list = random.sample(xrange( total_img_count ), gc );
+    chosen_list = random.sample(xrange( total_img_count ), int ( total_img_count * 0.8 ) );
     pics = [];
     collected_img = 0;
     for c in chosen_list:

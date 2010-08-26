@@ -18,6 +18,19 @@ BbsBoardParseConfig = [
     }
 },
 
+{ 'bbs':'tongji', 'schoolname':u'同舟共济', 
+    'type':2,#reteving and getting using different page patterns
+    'config':{
+	'usp':'http://bbs.tongji.edu.cn/bbsdoc.php?board=Picture&ftype=6',
+	'pup':'http://bbs.tongji.edu.cn/bbscon.php?bid=171&id=%s',
+    'pup2':'http://bbs.tongji.edu.cn/bbstcon.php?board=Picture&gid=%s',
+	'repage':"c.o\((.*?),.*?,'.*?',' .*?',.*?,'(.*?) ',.*?,0\);",
+	'ifp':'http://bbs.tongji.edu.cn/att.php?p.171.%s.%s.jpg',
+	'reimg':"attach\('.*?', .*?, (.*?)\);",
+    'reimggp':[1],
+    }
+},
+
 { 'bbs':'byhh', 'schoolname':u'白云黄鹤', 
     'config':{
 	'usp':'http://www.byhh.net/cgi-bin/bbstdoc?board=Picture',

@@ -63,7 +63,7 @@ class ImgLinkPage(models.Model):
         for cc in samlist:
             fid = self.imglist[ cc ];
             url = eval(fid);
-            if( cccc['type'] == 2 ):url=(self.pid,url[0]);
+            if( cccc['type'] == 2 ):url=(self.pid,url);
             pconfig = {
                 'url' : iup%(url),
                 'title':self.title ,
