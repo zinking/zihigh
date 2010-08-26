@@ -47,9 +47,45 @@ BbsBoardParseConfig = [
 	'usp':'http://bbs.fudan.edu.cn/bbs/tdoc?bid=11',
 	'pup':'http://bbs.fudan.edu.cn/bbs/tcon?bid=11&f=%s',
 	'repage':"<po .*?m='\+' owner='.*?' time= '.*?' id='(.*?)'>(.*?)</po>",
-	'ifp':'http://bbs.fudan.edu.cn/upload/PIC/%s.jpg',
-	'reimg':'http://bbs.fudan.edu.cn/upload/PIC/(.*?).(jpg|JPG)',
+	'ifp':'http://bbs.fudan.edu.cn/upload/PIC/%s',
+	'reimg':'http://bbs.fudan.edu.cn/upload/PIC/(.*?)$',
     'reimggp':[1],
+    }
+},
+
+
+{ 'bbs':'zd', 'schoolname':u'飘渺水云间', 
+    'config':{
+	'usp':'http://proxy3.zju88.net/agent/board.do?name=Picture&mode=0&page=0',
+	'pup':'http://proxy3.zju88.net/agent/thread.do?id=Picture-%s&page=0&bd=Picture&bp=0&m=0',
+	'repage':'<a href="thread.do\?id=Picture-(.*?)\&page=0\&bd=Picture\&bp=0\&m=0" class="a01">(.*?)</a>',
+	'ifp':'http://att.zju88.org/files/%s.jpg',
+	'reimg':'http://att.zju88.org/files/(.*?).jpg',
+    'reimggp':[1],
+    }
+},
+
+
+
+{ 'bbs':'dzkj', 'schoolname':u'一网深情', 
+    'config':{
+	'usp':'http://bbs.uestc.edu.cn/cgi-bin/bbstdoc?board=picture',
+	'pup':'http://bbs.uestc.edu.cn/cgi-bin/bbstcon?board=picture&file=M.%s.A',
+	'repage':'<A HREF=bbstcon\?board=picture\&file=M.(.*?).A>(.*?)</A>',
+	'ifp':'http://bbs.uestc.edu.cn/upload/picture/%s.jpg',
+	'reimg':"<A HREF='http://bbs.uestc.edu.cn/upload/picture/(.*?).jpg' TARGET=_BLANK>",
+    'reimggp':[1],
+    }
+},
+
+{ 'bbs':'zkd', 'schoolname':u'瀚海星云', 
+    'config':{
+	'usp':'http://bbs.ustc.edu.cn/cgi/bbstdoc?board=Cartoon',
+	'pup':'http://bbs.ustc.edu.cn/cgi/bbstcon?board=Cartoon&file=M.%s.A',
+	'repage':'<td class="title"><a class="o_title" href="bbstcon\?board=Cartoon\&amp;file=M.(.*?).A">(.*?)</a></td>',
+	'ifp':'http://bbs.ustc.edu.cn/cgi/sf?s=83b445cc&bn=Cartoon&fn=%s&an=%s.jpg',
+	'reimg':'<img src="sf\?s=83b445cc\&bn=Cartoon\&fn=(.*?)\&an=(.*?).jpg" onload="javascript:if\(this.width>screen.width-230\)this.width=screen.width-230;" border=0 vspace=1>',
+    'reimggp':[1,2],
     }
 },
 
