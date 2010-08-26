@@ -86,7 +86,9 @@ class ImageParser(object):
                 msg = 'no image found on this page with url:%s'%(purl);
                 #print msg;
                 raise Exception( msg );
+            title.strip();
             nilp = ImgLinkPage( config=cc, pid = id , title=title, imglist = imglist );
+            if ( c['type'] == 1 ): nilp.visitcount = -1;
             nilp.save();
         return tn;
         

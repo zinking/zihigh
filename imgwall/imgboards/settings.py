@@ -4,6 +4,13 @@
 #s. verify the dom with view source
 #3. checking the special characters
 
+#from django.contrib.sites.models import Site;
+from django.core.urlresolvers import reverse;
+
+img_url_pattern = 'http://l27.0.0.1:8000/f?id=%s';
+#img_url_pattern = 'http://202.120.40.90:9090/f?id=%s';
+#img_url_pattern = 'i-oo-i.appspot.com/f?id=%s';
+
 skipedwords = [ u'公告' ];
 BbsBoardParseConfig = [
 { 'bbs':'sjtu', 'schoolname':u'饮水思源', 

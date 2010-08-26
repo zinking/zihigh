@@ -89,3 +89,17 @@ def gae_pic_cron( request,  template='default.html', extra_context=None):
     parser.parseImageConifgedPageList( c.toDict() ,c );
     context['msg'] = 'successfully parsed';
     return rtr( template, context, context_instance=extra_context)
+    
+def view_pic_agents( request, template='default.html', extra_context=None):
+    if ( 'id' in request.GET ):
+        fid = request.GET['id'];
+        try:
+            ilp = ILPAgent.objects.get( id = fid );
+            return HttpResponse(ilp.data, mimetype="image/jpg")
+        except Exception,e:
+            logging.info(e);
+    context = RequestContext(request);
+    context['msg'] = 'Invalid File id Passed';  
+    return rtr( template, context, context_instance=extra_context);
+    
+

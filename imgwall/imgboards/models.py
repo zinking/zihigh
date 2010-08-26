@@ -1,9 +1,10 @@
 # coding=utf-8
 from django.db import models
-from djangotoolbox.fields import ListField;
+from djangotoolbox.fields import ListField,BlobField;
 
 import re;
 import logging;
+import random;
 # Create your models here.
 
 #class DetailedService(models.Model):
@@ -35,7 +36,6 @@ class ImgParseConfig(models.Model):
         cc['id'] = self.id; cc['bbs'] = self.bbs; cc['name'] = self.schoolname; cc['type'] = self.type;
         return cc;
 
-
 class ImgLinkPage(models.Model):
     id          = models.AutoField(primary_key=True);
     pid         = models.CharField( max_length=75 );
@@ -43,23 +43,62 @@ class ImgLinkPage(models.Model):
     imglist     = ListField( models.CharField( max_length=200 ) ); #image file id list,each id to form a image url
     title       = models.CharField(max_length=750 );
     parsetime   = models.DateTimeField( auto_now=True);
+    visitcount  = models.IntegerField( default = 0 );
     
-    def sample_image( self,  n ):
-        pics = [];
-        ic = len( self.imglist );
-        if( n > ic ):
-            n = ic-1;
-        import random;
-        samlist = random.sample(xrange(ic), int( n *0.5 ) );
+    
+    def getPageUrl(self ):
         try:
             cccc =  self.config.toDict();
+            if cccc['type'] == 2: pup = cccc['pup2'];
+            else : pup =  cccc['pup'];
+            return pup % self.pid;
+        except Exception,e:
+            logging.info( e );
+            logging.info("invalid ilp encountered %s"%(self.id) );
+            return;
+            
+    def getRandomImgUrl(self):
+        try:
+            cccc =  self.config.toDict();
+            ifp  = cccc['ifp'];
+            rid = random.randint( 0, len( self.imglist)-1 );
+            return ifp % eval(self.imglist[rid]);
+        except Exception,e:
+            self.delete();
+            logging.info("invalid ilp encountered %s"%(self.id) );
+            return;
+            
+            
+    def getAgentImgInfo(self):
+        if( self.visitcount < 0 ): raise Exception('Agent Image not Crond');
+        try:
+            ilpa = ILPAgent.objects.get( ilp = self );
+        except Exception,e:
+            logging.error( e );
+            raise Exception('Agent Image not Crond'); 
+        #img_url_pattern = "http://localhost:8000/m/f?fid=%s";
+        from settings import img_url_pattern;
+        return {
+            'url':img_url_pattern%(ilpa.id),
+            'title':self.title,
+            'purl':self.getPageUrl(),
+        }
+    
+    def sample_image( self,  n ):
+        try:
+            cccc =  self.config.toDict();
+            if( cccc['type'] == 1 ): return [ self.getAgentImgInfo() ];
             iup =  cccc['ifp'];
             pup =  cccc['pup'];
             if cccc['type'] == 2: pup = cccc['pup2'];
         except Exception,e:
-            self.delete();
+            logging.info( e );
             logging.info("invalid ilp encountered %s"%(self.id) );
             return [];
+        pics = [];
+        ic = len( self.imglist );
+        if( n > ic ): n = ic-1;
+        samlist = random.sample(xrange(ic), int( n *0.5 ) );
         for cc in samlist:
             fid = self.imglist[ cc ];
             url = eval(fid);
@@ -71,6 +110,13 @@ class ImgLinkPage(models.Model):
             };
             pics.append( pconfig );
         return pics;
+        
+        
+class ILPAgent(models.Model):
+    id          = models.AutoField(primary_key=True);
+    ilp         = models.ForeignKey(ImgLinkPage);
+    data        = BlobField();
+    parsetime   = models.DateTimeField( null=True,auto_now=True);
             
     
             
