@@ -3,6 +3,7 @@ from django.db import models
 from djangotoolbox.fields import ListField;
 
 import re;
+import logging;
 # Create your models here.
 
 #class DetailedService(models.Model):
@@ -27,7 +28,7 @@ class ImgParseConfig(models.Model):
     bbs     = models.CharField(max_length=75);
     schoolname 	= models.CharField(max_length=75);
     type    = models.IntegerField( default = 0 );
-    config  = models.CharField(max_length=1500);
+    config  = models.TextField( );
     
     def toDict(self):
         cc = eval( self.config );
@@ -49,13 +50,24 @@ class ImgLinkPage(models.Model):
         if( n > ic ):
             n = ic-1;
         import random;
-        samlist = random.sample(xrange(ic), n );
-        iup =  self.config.toDict()['ifp'];
+        samlist = random.sample(xrange(ic), int( n *0.5 ) );
+        try:
+            cccc =  self.config.toDict();
+            iup =  cccc['ifp'];
+            pup =  cccc['pup'];
+            if cccc['type'] == 2: pup = cccc['pup2'];
+        except Exception,e:
+            self.delete();
+            logging.info("invalid ilp encountered %s"%(self.id) );
+            return [];
         for cc in samlist:
             fid = self.imglist[ cc ];
+            url = eval(fid);
+            if( cccc['type'] == 2 ):url=(self.pid,url[0]);
             pconfig = {
-                'url' : iup%eval(fid),
-                'title':self.title   
+                'url' : iup%(fid),
+                'title':self.title ,
+                'purl':pup%self.pid,
             };
             pics.append( pconfig );
         return pics;
