@@ -65,7 +65,7 @@ class ImgLinkPage(models.Model):
             url = eval(fid);
             if( cccc['type'] == 2 ):url=(self.pid,url[0]);
             pconfig = {
-                'url' : iup%(fid),
+                'url' : iup%(url),
                 'title':self.title ,
                 'purl':pup%self.pid,
             };
