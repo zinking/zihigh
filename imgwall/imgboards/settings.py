@@ -89,4 +89,31 @@ BbsBoardParseConfig = [
     }
 },
 
+{ 'bbs':'xmu', 'schoolname':u'鼓浪听涛', 
+    'type':2,#reteving and getting using different page patterns
+    'config':{
+	'usp':'http://bbs.xmu.edu.cn/bbsdoc.php?board=Photography&ftype=6',
+	'pup':'http://bbs.xmu.edu.cn/bbscon.php?bid=117&id=%s',
+    'pup2':'http://bbs.xmu.edu.cn/bbstcon.php?board=Photography&gid=%s',
+	'repage':"c.o\((.*?),.*?,'.*?',' .*?',.*?,'(.*?) ',.*?,0\);",
+	'ifp':'http://bbs.xmu.edu.cn/att.php?p.117.%s.%s.jpg',
+	'reimg':"attach\('.*?', .*?, (.*?)\);",
+    'reimggp':[1],
+    }
+},
+
+{ 'bbs':'scu', 'schoolname':u'蓝色星空', 
+    'type':2,#reteving and getting using different page patterns
+    'config':{
+	'usp':'http://www.lsxk.org/bbsdoc.php?board=Picture&ftype=6',
+	'pup':'http://www.lsxk.org/bbscon.php?bid=290&id=%s',
+    'pup2':'http://www.lsxk.org/bbstcon.php?board=Picture&gid=%s',
+	'repage':"c.o\((.*?),.*?,'.*?',' .*?',.*?,'(.*?) ',.*?,0\);",
+	'ifp':'http://www.lsxk.org/att.php?p.290.%s.%s.jpg',
+	'reimg':"attach\('.*?', .*?, (.*?)\);",
+    'reimggp':[1],
+    }
+},
+
+
 ];
