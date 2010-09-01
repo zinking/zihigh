@@ -94,8 +94,8 @@ class ImageParser(object):
         
         
     def parseImageConfig( self, c, cc ):
-        if ( c['type'] == 3 ): self.parseICPL_P2(c,cc);
-        else: self.parseICPL(c,cc);
+        if ( c['type'] == 3 ): return self.parseICPL_P2(c,cc);
+        else: return self.parseICPL(c,cc);
         
     def parseICPL( self, c, cc ):#parseImageConifgedPageList
         t1 = time.time();
@@ -127,6 +127,7 @@ class ImageParser(object):
         logging.info( timingmsg );
         msg = "PARSE PIC BORAD OF %s FINISHED, PARSING %d pages %d images"%(c['bbs'], tparsedpages, tparsedimages );
         logging.info( msg );
+        return ( delta, msg );
         
     def parseICPL_P2( self, c, cc ):#parseImageConifgedPageList
         pass;

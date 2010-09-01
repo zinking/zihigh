@@ -7,9 +7,14 @@
 #from django.contrib.sites.models import Site;
 from django.core.urlresolvers import reverse;
 
-img_url_pattern = 'http://l27.0.0.1:8000/f?id=%s';
+#img_url_pattern = 'http://localhost:8000/f?id=%s';
 #img_url_pattern = 'http://202.120.40.90:9090/f?id=%s';
-#img_url_pattern = 'i-oo-i.appspot.com/f?id=%s';
+img_url_pattern = 'http://i-oo-i.appspot.com/f?id=%s';
+
+#fpage_url_pattern = 'http://localhost:8000/p/src?id=%s';
+fpage_url_pattern = 'http://i-oo-i.appspot.com/p/src?id=%s';
+
+parse_time_limit = 28*1000;
 
 skipedwords = [ u'公告' ];
 BbsBoardParseConfig = [

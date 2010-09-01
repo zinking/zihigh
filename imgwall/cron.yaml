@@ -1,4 +1,31 @@
 cron:
-- description: keep alive
-  url: /
-  schedule: every 2 minutes
+- description: refresh image links TASK1
+  url: /p/management/cron/link/
+  schedule: every 60 minutes    
+  
+- description: refresh image links TASK2
+  url: /p/management/cron/link/
+  schedule: every 61 minutes
+  
+- description: refresh image links TASK3
+  url: /p/management/cron/link/
+  schedule: every 62 minutes
+  
+  
+  
+  
+- description: refresh image agent TASK1
+  url: /p/management/cron/agent/
+  schedule: every 2 hours    
+  
+- description: refresh image agent TASK2
+  url: /p/management/cron/agent/
+  schedule: every 2 hours
+  
+- description: refresh image agent TASK3
+  url: /p/management/cron/agent/
+  schedule: every 2 hours
+  
+
+
+

@@ -14,6 +14,7 @@ from google.appengine.api import urlfetch;
 from datetime import *;
 
 from imgboards.models import *;
+from imgboards.settings import parse_time_limit;
 
 import time;
 import logging;
@@ -28,7 +29,6 @@ class ImageAgent(object):
         try: 
             imgdata = urllib2.urlopen( url ).read();
         except Exception, e: 
-            print e;
             error_msg = "Failed to open following img url %s" % (url);
             logging.error( error_msg );
             raise Exception(error_msg);
@@ -39,14 +39,38 @@ class ImageAgent(object):
     def cron_img(self):
         #first getting sites proventing outer links
         ps = ImgParseConfig.objects.filter( type = 1 );
+        #tlog = '';
+        #total_parse_time = 0;
+        #expected_parse_time = 500;
         for p in ps:#cron image agents per config file
             ilps = ImgLinkPage.objects.filter( config = p, visitcount = -1 );
             for ilp in ilps:
+                #if( total_parse_time + expected_parse_time > parse_time_limit ): return tlog;
+                t1 = time.time();
                 imgurl = ilp.getRandomImgUrl();
                 imgdata = self.getImgData( imgurl );
                 ilpa = ILPAgent( ilp = ilp, data = imgdata );
                 ilp.visitcount = 0;
                 ilp.save();
                 ilpa.save();
-                msg = "IMAGE AGENT FOR %s successfully saved"%(imgurl);
+                t2 = time.time();
+                delta = (t2-t1)*1000;
+                msg = "IMAGE AGENT FOR %s successfully saved, cost %d  milliseconds"%(imgurl,delta);
+                #tlog += msg + '\n';
+                #total_parse_time += delta;
                 logging.info(msg);
+        
+    def cron_ilp_agent(self, ilp ):
+        t1 = time.time();
+        imgurl = ilp.getRandomImgUrl();
+        imgdata = self.getImgData( imgurl );
+        ilpa = ILPAgent( ilp = ilp, data = imgdata );
+        ilp.visitcount = 0;
+        ilp.save();
+        ilpa.save();
+        t2 = time.time();
+        delta = (t2-t1)*1000;
+        msg = "IMAGE AGENT FOR %s successfully saved, cost %d  milliseconds"%(imgurl,delta);
+        logging.debug(msg);
+        return ( delta, msg );
+        

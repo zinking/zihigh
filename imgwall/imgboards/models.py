@@ -5,6 +5,7 @@ from djangotoolbox.fields import ListField,BlobField;
 import re;
 import logging;
 import random;
+from settings import *;
 # Create your models here.
 
 #class DetailedService(models.Model):
@@ -30,6 +31,7 @@ class ImgParseConfig(models.Model):
     schoolname 	= models.CharField(max_length=75);
     type    = models.IntegerField( default = 0 );
     config  = models.TextField( );
+    lastfresh   = models.DateTimeField( auto_now=True, null=True );
     
     def toDict(self):
         cc = eval( self.config );
@@ -56,6 +58,23 @@ class ImgLinkPage(models.Model):
             logging.info( e );
             logging.info("invalid ilp encountered %s"%(self.id) );
             return;
+    #no need to consider the type 1         
+    def getPageInfo(self):
+        try:
+            cccc =  self.config.toDict();
+            if cccc['type'] == 2: pup = cccc['pup2'];
+            else : pup =  cccc['pup'];
+            result = {
+                'url':pup%self.pid,
+                'sn':cccc['name'],
+                'title':self.title,
+                'createtime':self.parsetime,
+            };
+            return result;
+        except Exception,e:
+            logging.info( e );
+            logging.info("invalid ilp encountered %s"%(self.id) );
+            return;
             
     def getRandomImgUrl(self):
         try:
@@ -77,11 +96,12 @@ class ImgLinkPage(models.Model):
             logging.error( e );
             raise Exception('Agent Image not Crond'); 
         #img_url_pattern = "http://localhost:8000/m/f?fid=%s";
-        from settings import img_url_pattern;
+        
         return {
             'url':img_url_pattern%(ilpa.id),
             'title':self.title,
-            'purl':self.getPageUrl(),
+            #'purl':self.getPageUrl(),
+            'purl':fpage_url_pattern%self.id,
         }
     
     def sample_image( self,  n ):
@@ -106,7 +126,8 @@ class ImgLinkPage(models.Model):
             pconfig = {
                 'url' : iup%(url),
                 'title':self.title ,
-                'purl':pup%self.pid,
+                'purl':fpage_url_pattern%self.id,
+                #'purl':pup%self.pid,
             };
             pics.append( pconfig );
         return pics;

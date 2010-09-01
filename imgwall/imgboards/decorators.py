@@ -4,6 +4,7 @@ from ragendja.auth.decorators import *;
 from google.appengine.api import users;
 from django.template import RequestContext;
 from django.shortcuts import render_to_response as rtr;
+import logging;
 
 def bt_user_only(view):
     """
@@ -33,6 +34,20 @@ def admin_user_only(view):
         if users.is_current_user_admin():
             return view(request, *args, **kwargs)
         context = RequestContext(request);
+        return rtr( 'limit.html', context,None )
+    return wraps(view)(wrapped)
+    
+def gae_or_admin_only(view):
+    """
+    Decorator that requires user.is_admin. or app engine header.
+    """
+    def wrapped(request, *args, **kwargs):
+        if 'X-AppEngine-Cron' in request.META :
+            return view(request, *args, **kwargs);
+        elif users.is_current_user_admin():
+            return view(request, *args, **kwargs)
+        context = RequestContext(request);
+        logging.info('Cron Attempt failed due to auth fail');
         return rtr( 'limit.html', context,None )
     return wraps(view)(wrapped)
 

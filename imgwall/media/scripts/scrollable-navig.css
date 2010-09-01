@@ -1,0 +1,121 @@
+
+/* this makes it possible to add next button beside scrollable */
+
+
+/* prev, next, prevPage and nextPage buttons */
+a.prev, a.next, a.prevPage, a.nextPage {
+	display:block;
+	width:18px;
+	height:18px;
+	background:url(../images/left.png) no-repeat;
+	float:left;
+	margin:43px 10px;
+	cursor:pointer;
+	font-size:1px;
+}
+
+/* mouseover state */
+a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
+	background-position:0px -18px;		
+}
+
+/* disabled navigational button */
+a.disabled {
+	visibility:hidden !important;		
+}
+
+/* next button uses another background image */
+a.next, a.nextPage {
+	background-image:url(../images/right.png);
+	clear:right;	
+}
+
+
+
+/*********** navigator ***********/
+
+
+/* position and dimensions of the navigator */
+div.navi {
+	
+	width:200px;
+	height:40px;
+    margin:0 auto;
+}
+
+
+/* items inside navigator */
+div.navi a {
+	width:8px;
+	height:8px;
+	float:left;
+	margin:3px;
+	background:url(../images/navigator.png) 0 0 no-repeat;
+	display:block;
+	font-size:1px;
+}
+
+/* mouseover state */
+div.navi a:hover {
+	background-position:0 -8px;      
+}
+
+/* active state (current page state) */
+div.navi a.active {
+	background-position:0 -16px;     
+} 
+
+
+/* the overlayed element */ 
+div.overlay { 
+     
+    /* growing background image */ 
+    background-image:url(../images/white.png);
+    font-family:"lucida grande",tahoma,verdana,arial,sans-serif;    
+     
+    /* dimensions after the growing animation finishes  */ 
+    width:600px; 
+    height:470px;         
+     
+    /* initially overlay is hidden */ 
+    display:none; 
+     
+    /* some padding to layout nested elements nicely  */ 
+    padding:55px; 
+} 
+
+
+
+div.overlay  a.toolbar_button{/* @noflip */
+background:transparent url(../images/UIFramedPage_Button.gif) no-repeat top left;display:block;float:left;height:23px;margin:0 2px;overflow:hidden;text-decoration:none}
+div.overlay  a.toolbar_button span.toolbar_button_label{/* @noflip */
+background:transparent url(../images/UIFramedPage_Button.gif) no-repeat top right;display:block;line-height:21px;height:23px;padding:0 10px}
+ 
+/* default close button positioned on upper right corner */ 
+div.overlay div.close { 
+    background-image:url(../images/close.png); 
+    position:absolute; 
+    right:5px; 
+    top:5px; 
+    cursor:pointer; 
+    height:35px; 
+    width:35px; 
+} 
+ 
+ 
+/* black */ 
+div.overlay.black { 
+    background:url(../images/transparent.png) no-repeat !important; 
+    color:#fff; 
+} 
+ 
+/* petrol */ 
+div.overlay.petrol { 
+    background:url(../images/petrol.png) no-repeat !important; 
+    color:#fff; 
+} 
+ 
+div.black h2, div.petrol h2 { 
+    color:#ddd;         
+}	
+

@@ -13,5 +13,5 @@ urlpatterns = patterns('',
 	(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^pa/', vpics, {'template': 'pa.html'}, name='vpa'),
     url(r'^gaebar/', include('gaebar.urls')),
-    url(r'^f$',view_pic_agents,{'template':'default.html'},name="viewpics"),
+    url(r'^f$',view_pic_agents,{'template':'<default></default>.html'},name="viewpics"),
 ) +auth_patterns+ urlpatterns;

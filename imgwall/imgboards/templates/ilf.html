@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" >
+ <head> 
+  <title>查看内容/图大-校园里没有新鲜事</title>
+  
+  <link type="text/css" rel="stylesheet" href="/media/scripts/fb3.css" />
+  <link rel="stylesheet" type="text/css" href="/media/scripts/scrollable-navig.css" />
+
+  <script src="/media/scripts/jquery.js"></script>
+  
+ 
+  <script type="text/javascript">
+  var display_comment = false;
+  var comment_loaded  = false;
+  $( document ).ready( function() {
+        $("#content_iframe").src = "bbstop10.appspot.com";
+  })
+  
+  </script>
+
+ </head>
+ 
+ 
+ <body class="UIFramedPage safari4 Locale_zh_CN">
+
+  <div style="text-align:center;">
+   <div>
+    <a  style="font-size:14px;font-weight:bold;">    </a>   </div>
+  </div>
+
+  <!--<input type="hidden" id="post_form_id" name="post_form_id"  />-->
+  {% load timeagofilter  %}
+  <table id="page_table" class="page_table" cellpadding="0" cellspacing="0">
+   <tr>
+    <td class="header_cell" id="header_cell">
+     <div class="header_content clearfix">
+      <div class="UIOneOff_Container">
+       <div id="header_info" class="header_info">
+        <a class="header_thumb_link">
+         <!-- <img  alt="" class="header_thumb_img" style="height:30px;width:30px;" />   -->      
+        </a>
+        <div class="header_info_text">
+         <div class="header_title_text">
+          <a  class="owner">TOP 10</a>
+          发布了一篇新帖
+          <span class="header_info_timestamp">{{ link.createtime|timeago }} ago</span>         
+         </div>
+         <div class="header_comment" id="elink_comment_wrapper">
+          <span>{{link.title}}</span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    
+    
+     
+    <div class="header_actions" style="margin-left:15">
+      <a    class="toolbar_button has_icon" ><span class="toolbar_button_label"><span class="toolbar_button_icon" ></span>Home</span></a>
+      <a     class="toolbar_button has_icon" ><span class="toolbar_button_label"><span class="toolbar_button_icon" >&nbsp;</span>ListView</span></a>
+      <a    class="toolbar_button has_icon" rel="#overlay"><span class="toolbar_button_label"><span class="toolbar_button_icon" >&nbsp;</span>评论</span></a>
+      <a    class="toolbar_button has_icon rating"><span class="toolbar_button_label" onclick="ratinglinks(1)"><span class="toolbar_button_icon" >&nbsp;</span>赞</span></a> 
+      <a    class="toolbar_button has_icon rating"><span class="toolbar_button_label" onclick="ratinglinks(2)"><span class="toolbar_button_icon" >&nbsp;</span>踩</span></a> 
+      <a    id="toggle_comment_button" class="toolbar_button has_icon"><span class="toolbar_button_label"><span class="toolbar_button_icon" >&nbsp;</span>显示评论</span></a>       
+    </div>
+    
+
+    <div class="header_actions" style="margin-left:5px;">
+        <span   class="toolbar_button has_icon"><span class="toolbar_button_label"><span class="toolbar_button_icon" >&nbsp;</span>标记</span></span>
+        <select id="tag_select">
+            <option value="default">我来鉴定</option>
+
+        </select>
+    </div>
+
+    
+     <div class="url_bar known_url" >
+      <a title="" class="remove_link" >&nbsp;</a>
+      来源：
+      <a title="" class="url_fragment" href="{{link.url}}" >
+       {{link.sn}}</a>
+     </div>
+     
+     <div class="url_bar unknown_url">
+      <a title="删除框架" class="remove_link" >&nbsp;</a>
+      返回
+      <a title="移除框架并访问该网址。" class="url_fragment" >
+       {{link.url}}</a>
+     </div>    
+     
+     </td>
+   </tr>
+   
+  <tr>
+    <td class="content_cell" id="content_cell">
+     <div class="content_cell_inner_shadow">
+&nbsp;     </div>
+     <iframe id="content_iframe" style="background-color:white"
+        class="content_iframe" name="content_iframe" 
+        src="{{link.url}}" frameborder="0" scrolling="Auto">your browser do not supprot iframe</iframe>  
+
+
+
+   </td>
+   </tr>
+  </table>
+  
+
+
+
+
+
+
+
+   
+ </body>
+</html>
