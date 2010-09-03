@@ -44,6 +44,33 @@ def vpics( request,  template='default.html', extra_context=None):
     return rtr( template, context, context_instance=extra_context, mimetype="application/xhtml+xml")
 
     
+    
+def vpicstoday( request,  template='default.html', extra_context=None):
+    context = RequestContext(request);
+    now = datetime.now();
+    ilps = ImgLinkPage.objects.all();
+    ilps1 = [];
+    total_img_count = len( ilps );
+    for c in range(total_img_count):
+        if ilps[c].parsetime.year == now.year and ilps[c].parsetime.month == now.month and ilps[c].parsetime.day == now.day:
+            ilps1.append(ilps[c])
+    tgc = 100;
+    total_img_count = len( ilps1 );
+    chosen_list = random.sample(xrange( total_img_count ), int ( total_img_count * 0.8 ) );
+    pics = [];
+    collected_img = 0;
+    for c in chosen_list:
+        if collected_img > tgc:
+            break;
+        ilp = ilps[c];
+        ic = len( ilp.imglist );
+        sample_n = random.randint( 0, ic-1);
+        pics.extend( ilp.sample_image( sample_n ) );
+        collected_img = collected_img + sample_n;
+        
+    context['pics'] = pics;
+    return rtr( template, context, context_instance=extra_context, mimetype="application/xhtml+xml")
+
 def vpicos( request,  template='default.html', extra_context=None):
     context = RequestContext(request);
     ilps = ImgLinkPage.objects.all();
