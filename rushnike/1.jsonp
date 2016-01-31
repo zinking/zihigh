@@ -1,0 +1,244 @@
+
+nike_Cart_handleJCartResponse({
+    "status": "success",
+    "order": {
+        "id": "AO372369910",
+        "objType": "order",
+        "itemQuantity": 3,
+        "priceInfo": {
+            "currencyFormat": "￥0.00",
+            "currency": "CNY",
+            "amount": "2517.0",
+            "isDiscounted": false,
+            "formattedAmount": "￥2,517.00",
+            "subTotal": 2517.0,
+            "formattedSubTotal": "￥2,517.00",
+            "discountAmount": 0.0,
+            "formattedDiscountAmount": "￥0.00",
+            "tax": 0.0,
+            "rawSubtotal": 2517.0,
+            "formattedRawSubtotal": "￥2,
+            517.00 ","
+            formattedTax " :"￥
+            0.00 ","
+            shipping " :0.0,"
+            formattedShipping " :"￥
+            0.00 ","
+            rawShipping " :0.0,"
+            formattedRawShipping ": "￥0.00",
+            "giftWrap": 0.0,
+            "formattedGiftWrap": "￥0.00",
+            "total": 2517.0,
+            "formattedTotal": "￥2,517.00"
+        },
+        "originOfOrder": "500",
+        "transient": false,
+        "shippingGroups": [{
+                "id": "AS39479919",
+                "objType": "shippingGroup",
+                "priceInfo": {
+                    "currencyFormat": "￥0.00",
+                    "currency": "CNY",
+                    "amount": "0.0",
+                    "isDiscounted": false,
+                    "formattedAmount": "￥0.00",
+                    "rawShipping": 0.0,
+                    "formattedRawShipping": "￥0.00"
+                },
+                "shippingMethod": "Ground Service",
+                "description": "me",
+                "shippingMethodDisplay": "普通达",
+                "commerceItems": [{
+                        "id": "AI1564095057",
+                        "objType": "commerceItem",
+                        "priceInfo": {
+                            "currencyFormat": "￥0.00",
+                            "currency": "CNY",
+                            "amount": "839.0",
+                            "isDiscounted": false,
+                            "formattedAmount": "￥839.00",
+                            "listPrice": 839.0,
+                            "formattedListPrice": "￥839.00",
+                            "salePrice": 0.0,
+                            "formattedSalePrice": "￥0.00",
+                            "onSale": false,
+                            "rawTotalPrice": 839.0,
+                            "formattedRawTotalPrice": "￥839.00",
+                            "giftWrapPrice": 0.0,
+                            "formattedGiftWrapPrice": "￥0.00"
+                        },
+                        "validForCountry": true,
+                        "commerceItemClassType": "default",
+                        "quantity": 1,
+                        "catalogRefId": "11565093",
+                        "catalogId": "4",
+                        "product": {
+                            "id": "10264996",
+                            "view": "short",
+                            "displayName": "Air Jordan Future Low 男孩运动童鞋",
+                            "description": "Air Jordan Future Low 男孩运动童鞋",
+                            "colorNumber": "400",
+                            "activeIndicator": "ACTIVE",
+                            "type": "nikeProduct",
+                            "styleNumber": "724813",
+                            "salePrice": "839.0",
+                            "listPrice": "839.0",
+                            "employeePrice": "503.0",
+                            "onSale": false,
+                            "currency": "CNY",
+                            "currencyFormat": "￥0.00",
+                            "formattedListPrice": "￥839.00",
+                            "formattedSalePrice": "￥839.00",
+                            "colorDescription": "相片蓝/白/黑",
+                            "prdGroupId": "10314694",
+                            "nikeType": "FOOTWEAR",
+                            "dynamicAttributes": {
+                                "simplecolor": "3469",
+                                "giftwrap": "true",
+                                "modelType": "1",
+                                "swatchcolorhex": "3586",
+                                "sizeconversion": "5284",
+                                "publishdate": "04/13/2015",
+                                "divisioncode": "20"
+                            }
+                        },
+                        "shipTo": null,
+                        "giftMessage": null,
+                        "giftMessageType": 0,
+                        "itemSource": "SC",
+                        "sizeType": "",
+                        "displaySize": "40",
+                        "sizeDescription": "7Y",
+                        "eanNumber": "00091203692147",
+                        "colorNumber": "400",
+                        "colorDescription": "相片蓝/白/黑"
+                    }, {
+                        "id": "AI1589001292",
+                        "objType": "commerceItem",
+                        "priceInfo": {
+                            "currencyFormat": "￥0.00",
+                            "currency": "CNY",
+                            "amount": "839.0",
+                            "isDiscounted": false,
+                            "formattedAmount": "￥839.00",
+                            "listPrice": 839.0,
+                            "formattedListPrice": "￥839.00",
+                            "salePrice": 0.0,
+                            "formattedSalePrice": "￥0.00",
+                            "onSale": false,
+                            "rawTotalPrice": 839.0,
+                            "formattedRawTotalPrice": "￥839.00",
+                            "giftWrapPrice": 0.0,
+                            "formattedGiftWrapPrice": "￥0.00"
+                        },
+                        "validForCountry": true,
+                        "commerceItemClassType": "default",
+                        "quantity": 1,
+                        "catalogRefId": "11565093",
+                        "catalogId": "4",
+                        "product": {
+                            "id": "10264996",
+                            "view": "short",
+                            "displayName": "Air Jordan Future Low 男孩运动童鞋",
+                            "description": "Air Jordan Future Low 男孩运动童鞋",
+                            "colorNumber": "400",
+                            "activeIndicator": "ACTIVE",
+                            "type": "nikeProduct",
+                            "styleNumber": "724813",
+                            "salePrice": "839.0",
+                            "listPrice": "839.0",
+                            "employeePrice": "503.0",
+                            "onSale": false,
+                            "currency": "CNY",
+                            "currencyFormat": "￥0.00",
+                            "formattedListPrice": "￥839.00",
+                            "formattedSalePrice": "￥839.00",
+                            "colorDescription": "相片蓝/白 / 黑 ","
+                            prdGroupId " :"
+                            10314694 ","
+                            nikeType " :"
+                            FOOTWEAR ","
+                            dynamicAttributes " :{"
+                            simplecolor " :"
+                            3469 ","
+                            giftwrap ": "true",
+                            "modelType": "1",
+                            "swatchcolorhex": "3586",
+                            "sizeconversion": "5284",
+                            "publishdate": "04/13/2015",
+                            "divisioncode": "20"
+                        }
+                    }, "shipTo": null, "giftMessage": null, "giftMessageType": 0, "itemSource": "SC", "sizeType": "", "displaySize": "40", "sizeDescription": "7Y", "eanNumber": "00091203692147", "colorNumber": "400", "colorDescription": "相片蓝/白/黑"
+                },
+                {
+                    "id": "AI1589001324",
+                    "objType": "commerceItem",
+                    "priceInfo": {
+                        "currencyFormat": "￥0.00",
+                        "currency": "CNY",
+                        "amount": "839.0",
+                        "isDiscounted": false,
+                        "formattedAmount": "￥839.00",
+                        "listPrice": 839.0,
+                        "formattedListPrice": "￥839.00",
+                        "salePrice": 0.0,
+                        "formattedSalePrice": "￥0.00",
+                        "onSale": false,
+                        "rawTotalPrice": 839.0,
+                        "formattedRawTotalPrice": "￥839.00",
+                        "giftWrapPrice": 0.0,
+                        "formattedGiftWrapPrice": "￥0.00"
+                    },
+                    "validForCountry": true,
+                    "commerceItemClassType": "default",
+                    "quantity": 1,
+                    "catalogRefId": "11565093",
+                    "catalogId": "4",
+                    "product": {
+                        "id": "10264996",
+                        "view": "short",
+                        "displayName": "Air Jordan Future Low
+                        男孩运动童鞋 ","
+                        description " :"
+                        Air Jordan Future Low 男孩运动童鞋 ","
+                        colorNumber " :"
+                        400 ","
+                        activeIndicator " :"
+                        ACTIVE ",
+                        "type": "nikeProduct",
+                        "styleNumber": "724813",
+                        "salePrice": "839.0",
+                        "listPrice": "839.0",
+                        "employeePrice": "503.0",
+                        "onSale": false,
+                        "currency": "CNY",
+                        "currencyFormat": "￥0.00",
+                        "formattedListPrice": "￥839.00",
+                        "formattedSalePrice": "￥839.00",
+                        "colorDescription": "相片蓝/白/黑",
+                        "prdGroupId": "10314694",
+                        "nikeType": "FOOTWEAR",
+                        "dynamicAttributes": {
+                            "simplecolor": "3469",
+                            "giftwrap": "true",
+                            "modelType": "1",
+                            "swatchcolorhex": "3586",
+                            "sizeconversion": "5284",
+                            "publishdate": "04/13/2015",
+                            "divisioncode": "20"
+                        }
+                    },
+                    "shipTo": null,
+                    "giftMessage": null,
+                    "giftMessageType": 0,
+                    "itemSource": "SC",
+                    "sizeType": "",
+                    "displaySize": "40",
+                    "sizeDescription": "7Y",
+                    "eanNumber": "00091203692147",
+                    "colorNumber": "400",
+                    "colorDescription": "相片蓝/白/黑"
+                }]
+        }]
+}
+});

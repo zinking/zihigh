@@ -1,0 +1,28 @@
+
+c(e="send-xhr-end", n=[["{"events":[{"pid":"10264...37897169,"vID":"0.9.7"}"], XMLHttpRequest { readyState=4, timeout=0, withCredentials=false, more...}, undefined], r=XMLHttpRequest { readyState=4, timeout=0, withCredentials=false, more...})
+nrWrapper()
+.send()
+bw = bF(bZ, bU, b0, bW)
+.ajax()
+[1]</</</n.dreamsConstructor.prototype.sendPost(e=Object { events=[1], g="fbc8f793-becb-4743-d2c1-256b453f3afe", t=1429437897169, more...}, t=undefined)
+[1]</</</n.dreamsConstructor.prototype.logBatch()
+e = Object { pid="10264996", qty="1", skuAndSize="11565093:40", more...}
+[1]</</</n.dreamsConstructor.prototype.catchEvent(t=Object { type="addToCartEvent", timeStamp=1429437897169, jQuery17204197261191040197=true, more...}, n=Object { data={...}, element={...}, trackProduct={...}})
+b.event.dispatch(bH=Object { type="addToCartEvent", timeStamp=1429437897169, jQuery17204197261191040197=true, more...})
+b.event.add/bB(bL=Object { type="addToCartEvent", timeStamp=1429437897169, jQuery17204197261191040197=true, more...})
+b.event.trigger(bv=Object { type="addToCartEvent", timeStamp=1429437897169, jQuery17204197261191040197=true, more...}, bD=[Object { type="addToCartEvent", timeStamp=1429437897169, jQuery17204197261191040197=true, more...}, Object { data={...}, element={...}, trackProduct={...}}], bA=Window pgid-10314694, bJ=undefined)
+.trigger/<()
+b</<.each()
+b3 = Object[Window pgid-10314694]
+b6 = function()
+b2 = undefined
+b</bF.prototype.each()
+b1 = function()
+b0 = undefined
+.trigger(e="addToCartEvent", bv=Object { data={...}, element={...}, trackProduct={...}})
+a.EventBus<.dispatchEvent(h="addToCartEvent", i=Object { data={...}, element={...}, trackProduct={...}})
+nike.Cart.addToCart(d=Object { action="addItem", lang_locale="zh_CN", country="CN", more...}, e=Object[form.add-to-cart-form.nike-buying-tools], l=function(), b=function())
+nike.exp.pdp.PdpBuyingTools.prototype.addToCart(d=Object { originalEvent=Event click, type="click", timeStamp=116593366, more...})
+b.event.dispatch(bH=Object { originalEvent=Event click, type="click", timeStamp=116593366, more...})
+b.event.add/bB(bL=click clientX=1185, clientY=135)
+nrWrapper()

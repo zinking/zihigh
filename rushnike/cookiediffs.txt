@@ -1,0 +1,121 @@
+awang:rushnike/ $ diff cookies.2.txt cookies.1.txt                                                                      [23:50:28]
+8c8
+24,25c24,25
+< .nike.com	TRUE	/	FALSE	1434642358	ResonanceSegment	1
+< .nike.com	TRUE	/	FALSE	1429460158	RES_SESSIONID	88648732558285492
+---
+> .nike.com	TRUE	/	FALSE	1434642321	ResonanceSegment	1
+> .nike.com	TRUE	/	FALSE	1429460121	RES_SESSIONID	88648732558285492
+28c28
+< .nike.com	TRUE	/	FALSE	1492616759	s_pers	%20s_fid%3D3DB6425BB774B6DE-0C2DB0400EE04492%7C1492616759667%3B%20c5%3Dnikecom%253Ecart%253Eadd%2520to%2520cart%2520success%7C1429460159682%3B%20c6%3Dcart%7C1429460159703%3B%20v15%3D1431877559727%7C1431877559727%3B
+---
+> .nike.com	TRUE	/	FALSE	1492616722	s_pers	%20s_fid%3D3DB6425BB774B6DE-0C2DB0400EE04492%7C1492616722902%3B%20c5%3Dnikecom%253Epdp%253EAIR%2520JORDAN%2520FUTURE%2520LOW%2520BG%7C1429460122918%3B%20c6%3Dpdp%253Astandard%7C1429460122940%3B
+30c30
+< .nike.com	TRUE	/	FALSE	1430063156	RT	dm=nike.com&si=1c87c03e-d8ae-4b73-af59-43d77a0f3b98&ss=1429448661798&sl=11&tt=480090&obo=2&bcn=%2F%2F36c3feee.mpstat.us%2F&nu=&cl=1429458356024
+---
+> .nike.com	TRUE	/	FALSE	1430063124	RT	dm=nike.com&si=1c87c03e-d8ae-4b73-af59-43d77a0f3b98&ss=1429448661798&sl=11&tt=480090&obo=2&bcn=%2F%2F36c3feee.mpstat.us%2F
+49,50d48
+< .nike.com	TRUE	/	FALSE	APID	C90881DF0514B3D0038B56B959EF15E1.sin-464-app-ap-0
+< .nike.com	TRUE	/	FALSE	CART_SUMMARY	%7B%22profileId%22+%3A%2213074831437%22%2C%22userType%22+%3A%22DEFAULT_USER%22%2C%22securityStatus%22+%3A%220%22%2C%22cartCount%22+%3A1%7D
+
+
+
+
+awang:rushnike/ $ diff cookies.2.txt cookies.3.txt                                                                      [23:47:20]
+8c8
+24,25c24,25
+< .nike.com	TRUE	/	FALSE	1434642358	ResonanceSegment	1
+< .nike.com	TRUE	/	FALSE	1429460158	RES_SESSIONID	88648732558285492
+---
+> .nike.com	TRUE	/	FALSE	1434642459	ResonanceSegment	1
+> .nike.com	TRUE	/	FALSE	1429460259	RES_SESSIONID	88648732558285492
+28c28
+< .nike.com	TRUE	/	FALSE	1492616759	s_pers	%20s_fid%3D3DB6425BB774B6DE-0C2DB0400EE04492%7C1492616759667%3B%20c5%3Dnikecom%253Ecart%253Eadd%2520to%2520cart%2520success%7C1429460159682%3B%20c6%3Dcart%7C1429460159703%3B%20v15%3D1431877559727%7C1431877559727%3B
+---
+> .nike.com	TRUE	/	FALSE	1492616860	s_pers	%20v15%3D1431877559727%7C1431877559727%3B%20s_fid%3D3DB6425BB774B6DE-0C2DB0400EE04492%7C1492616860314%3B%20c5%3Dnikecom%253Ecart%253Eadd%2520to%2520cart%2520success%7C1429460260330%3B%20c6%3Dcart%7C1429460260350%3B
+30c30
+< .nike.com	TRUE	/	FALSE	1430063156	RT	dm=nike.com&si=1c87c03e-d8ae-4b73-af59-43d77a0f3b98&ss=1429448661798&sl=11&tt=480090&obo=2&bcn=%2F%2F36c3feee.mpstat.us%2F&nu=&cl=1429458356024
+---
+> .nike.com	TRUE	/	FALSE	1430063257	RT	dm=nike.com&si=1c87c03e-d8ae-4b73-af59-43d77a0f3b98&ss=1429448661798&sl=11&tt=480090&obo=2&bcn=%2F%2F36c3feee.mpstat.us%2F&nu=&cl=1429458457751
+50c50,51
+< .nike.com	TRUE	/	FALSE	CART_SUMMARY	%7B%22profileId%22+%3A%2213074831437%22%2C%22userType%22+%3A%22DEFAULT_USER%22%2C%22securityStatus%22+%3A%220%22%2C%22cartCount%22+%3A1%7D
+---
+> .nike.com	TRUE	/	FALSE	CART_SUMMARY	%7B%22profileId%22+%3A%2213074831437%22%2C%22userType%22+%3A%22DEFAULT_USER%22%2C%22securityStatus%22+%3A%220%22%2C%22cartCount%22+%3A2%7D
+> .nike.com	TRUE	/	FALSE	1492530460	s_vi	[CS]v1|2A99E71F052A853D-60000301800BF673[CE]
+
+
+
+
+awang:rushnike/ $ diff cookies.3.txt cookies.4.txt                                                                      [23:48:11] 
+24,25c24,25
+< .nike.com	TRUE	/	FALSE	1434642459	ResonanceSegment	1
+< .nike.com	TRUE	/	FALSE	1429460259	RES_SESSIONID	88648732558285492
+---
+> .nike.com	TRUE	/	FALSE	1434642604	ResonanceSegment	1
+> .nike.com	TRUE	/	FALSE	1429460404	RES_SESSIONID	88648732558285492
+28c28
+< .nike.com	TRUE	/	FALSE	1492616860	s_pers	%20v15%3D1431877559727%7C1431877559727%3B%20s_fid%3D3DB6425BB774B6DE-0C2DB0400EE04492%7C1492616860314%3B%20c5%3Dnikecom%253Ecart%253Eadd%2520to%2520cart%2520success%7C1429460260330%3B%20c6%3Dcart%7C1429460260350%3B
+---
+> .nike.com	TRUE	/	FALSE	1492617005	s_pers	%20v15%3D1431877559727%7C1431877559727%3B%20s_fid%3D3DB6425BB774B6DE-0C2DB0400EE04492%7C1492617005667%3B%20c5%3Dnikecom%253Ecart%253Eadd%2520to%2520cart%2520success%7C1429460405683%3B%20c6%3Dcart%7C1429460405704%3B
+30c30
+< .nike.com	TRUE	/	FALSE	1430063257	RT	dm=nike.com&si=1c87c03e-d8ae-4b73-af59-43d77a0f3b98&ss=1429448661798&sl=11&tt=480090&obo=2&bcn=%2F%2F36c3feee.mpstat.us%2F&nu=&cl=1429458457751
+---
+> .nike.com	TRUE	/	FALSE	1430063402	RT	dm=nike.com&si=1c87c03e-d8ae-4b73-af59-43d77a0f3b98&ss=1429448661798&sl=11&tt=480090&obo=2&bcn=%2F%2F36c3feee.mpstat.us%2F&nu=&cl=1429458602286
+50,51c50,51
+< .nike.com	TRUE	/	FALSE	CART_SUMMARY	%7B%22profileId%22+%3A%2213074831437%22%2C%22userType%22+%3A%22DEFAULT_USER%22%2C%22securityStatus%22+%3A%220%22%2C%22cartCount%22+%3A2%7D
+< .nike.com	TRUE	/	FALSE	1492530460	s_vi	[CS]v1|2A99E71F052A853D-60000301800BF673[CE]
+---
+> .nike.com	TRUE	/	FALSE	CART_SUMMARY	%7B%22profileId%22+%3A%2213074831437%22%2C%22userType%22+%3A%22DEFAULT_USER%22%2C%22securityStatus%22+%3A%220%22%2C%22cartCount%22+%3A3%7D
+> .nike.com	TRUE	/	FALSE	1492530605	s_vi	[CS]v1|2A99E71F052A853D-60000301800BF673[CE]
+
+awang:rushnike/ $ diff cookies.3.txt cookies.4.txt                                                                      [23:48:11] 
+24,25c24,25
+< .nike.com	TRUE	/	FALSE	1434642459	ResonanceSegment	1
+< .nike.com	TRUE	/	FALSE	1429460259	RES_SESSIONID	88648732558285492
+---
+> .nike.com	TRUE	/	FALSE	1434642604	ResonanceSegment	1
+> .nike.com	TRUE	/	FALSE	1429460404	RES_SESSIONID	88648732558285492
+28c28
+< .nike.com	TRUE	/	FALSE	1492616860	s_pers	 v15=1431877559727|1431877559727; s_fid=3DB6425BB774B6DE-0C2DB0400EE04492|1492616860314; c5=nikecom%3Ecart%3Eadd%20to%20cart%20success|1429460260330; c6=cart|1429460260350;
+---
+> .nike.com	TRUE	/	FALSE	1492617005	s_pers	 v15=1431877559727|1431877559727; s_fid=3DB6425BB774B6DE-0C2DB0400EE04492|1492617005667; c5=nikecom%3Ecart%3Eadd%20to%20cart%20success|1429460405683; c6=cart|1429460405704;
+30c30
+< .nike.com	TRUE	/	FALSE	1430063257	RT	dm=nike.com&si=1c87c03e-d8ae-4b73-af59-43d77a0f3b98&ss=1429448661798&sl=11&tt=480090&obo=2&bcn=//36c3feee.mpstat.us/&nu=&cl=1429458457751
+---
+> .nike.com	TRUE	/	FALSE	1430063402	RT	dm=nike.com&si=1c87c03e-d8ae-4b73-af59-43d77a0f3b98&ss=1429448661798&sl=11&tt=480090&obo=2&bcn=//36c3feee.mpstat.us/&nu=&cl=1429458602286
+50,51c50,51
+< .nike.com	TRUE	/	FALSE	CART_SUMMARY	{"profileId" :"13074831437","userType" :"DEFAULT_USER","securityStatus" :"0","cartCount" :2}
+< .nike.com	TRUE	/	FALSE	1492530460	s_vi	[CS]v1|2A99E71F052A853D-60000301800BF673[CE]
+---
+> .nike.com	TRUE	/	FALSE	CART_SUMMARY	{"profileId" :"13074831437","userType" :"DEFAULT_USER","securityStatus" :"0","cartCount" :3}
+> .nike.com	TRUE	/	FALSE	1492530605	s_vi	[CS]v1|2A99E71F052A853D-60000301800BF673[CE]
+
+
+trackingServer "modus.nike.com"
+trackingServerSecure "smodus.nike.com"
+
+https://secure-store.nike.com/ap/services/jcartService?callback=nike_Cart_handleJCartResponse&action=addItem&lang_locale=zh_CN&country=CN&catalogId=4&productId=10264996&price=839&siteId=null&line1=Air+Jordan+Future+Low&line2=%E7%94%B7%E5%AD%A9%E8%BF%90%E5%8A%A8%E7%AB%A5%E9%9E%8B&passcode=null&sizeType=null&skuAndSize=11565092%3A39&qty=1&rt=json&view=3&skuId=11565092&displaySize=39&_=1429622995296
+
+sessionid1=23.205.169.101.143261429452957335
+
+cached_t_start 1429625249004 complete false cookie "RT" cookie_exp 604800 initialized true lastActionTime 1429625389363 loadTime 179339 navigationStart 1429625249004 navigationType 0
+lastActionTime : 2015-04-21 22:09:49.363000
+
+cl 1429625389363 dm "nike.com" hd "1429625362624" nu "" obo 2 r "http://store.nike.com/cn...-10264996/pgid-10314694" si "cd39cbb7-45fd-4da9-8df1-c475ac02a735" sl 13 ss 1429615850080 tt 179339 ul "1429625362279"
+
+s_vi=[CS]v1|2A99E71F052A853D-60000301800BF673[CE]; expires=Thu, 20 Apr 2017 14:34:53 GMT; path=/; domain=.nike.com
+s_sess=%20s_sq%3D%3B; path=/; domain=.nike.com
+s_pers=%20s_fid%3D5F79B73C644CE21B-22981D6AA7927721%7C1492785292416%3B%20c5%3Dnikecom%253Ecart%253Eadd%2520to%2520cart%2520success%7C1429628692443%3B%20c6%3Dcart%7C1429628692473%3B; expires=Fri, 21 Apr 2017 14:34:52 GMT; path=/; domain=.nike.com
+pr_data=0; path=/; domain=.nike.com
+nike_locale=cn/zh_cn; path=/; domain=.nike.com
+mt.v=2.2106092447.1429458322421; expires=Sun, 19 Apr 2020 14:28:17 GMT; path=/; domain=.nike.com
+id=2257e1270a040073||t=1429458360|et=730|cs=002213fd48b05809b23adf76bb; expires=Tue, 18 Apr 2017 15:45:24 GMT; path=/; domain=.doubleclick.net
+guidU=3f061a78-8a46-472e-a497-8354f8795d44; expires=Sat, 13 Jan 2018 15:45:20 GMT; path=/; doma
+CONSUMERCHOICE_SESSION=t; path=/; domain=.nike.com
+CONSUMERCHOICE=cn/zh_cn; expires=Tue, 19 Apr 2016 14:11:17 GMT; path=/; domain=.nike.com
+CART_SUMMARY=%7B%22profileId%22+%3A%2213081418557%22%2C%22userType%22+%3A%22DEFAULT_USER%22%2C%22securityStatus%22+%3A%220%22%2C%22cartCount%22+%3A8%7D; path=/; domain=.nike.com
+BVSID=0e3fbe13-d404-49ef-80b1-d055ccd985c3; expires=Tue, 21 Apr 2015 14:58:33 GMT; path=/; domain=network.bazaarvoice.com
+BVID=6f46fe39-dcde-455e-b388-cebd72450c2a; expires=Mon, 10 Oct 2016 15:45:25 GMT; path=/; domain=network.bazaarvoice.com
+AnalysisUserId=210.192.109.15.42871429458355777; expires=Fri, 31 Dec 2038 23:59:23 GMT; path=/; domain=.nike.com
+APID=D96CEB47591F3289E4F861122C89234A.sin-464-app-ap-0; path=/; domain=.nike.com
+AKSB=s=1429624882982&r=http%3A//store.nike.com/common/content/endpoint.html%23xdm_e%3Dhttp%253A%252F%252Fstore.nike.com%252Fcn%252Fzh_cn%252Fpd%252Fair-jordan-future-low-%2525E8%2525BF%252590%2525E5%25258A%2525A8%2525E9%25259E%25258B%252Fpid-10264996%252Fpgid-10314694%26xdm_c%3Ddefault9073%26xdm_p%3D4; path=/; domain=store.nike.com

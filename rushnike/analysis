@@ -1,0 +1,70 @@
+two ajax requests:
+
+resp1
+HTTP/1.1 202 Accepted
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: http://store.nike.com
+Server: Jetty(9.1.3.v20140225)
+Vary: Accept-Encoding
+X-B3-TraceId: 6104646779048203498
+Content-Length: 0
+Connection: keep-alive
+
+    
+req1
+POST /nod/rest/intake HTTP/1.1
+Host: nod.nikecloud.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:37.0) Gecko/20100101 Firefox/37.0 FirePHP/0.7.4
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: text/plain; charset=UTF-8
+Referer: http://store.nike.com/cn/zh_cn/pd/air-jordan-future-low-%E8%BF%90%E5%8A%A8%E9%9E%8B/pid-10264996/pgid-10314694
+Content-Length: 185
+Origin: http://store.nike.com
+x-insight: activate
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+    
+postData1
+{"events":[{"pid":"10264996","qty":"1","skuAndSize":"11565093:40","name":"addToCartEvent","t":1429189989802
+}],"g":"48695765-f17e-4a70-cd0c-bf4b8d573032","t":1429189989802,"vID":"0.9.7"}
+
+
+    
+resp2
+HTTP/1.1 202 Accepted
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: http://store.nike.com
+Server: Jetty(9.1.3.v20140225)
+Vary: Accept-Encoding
+X-B3-TraceId: 5808134209666022892
+Content-Length: 0
+Connection: keep-alive
+
+req2
+POST /nod/rest/intake HTTP/1.1
+Host: nod.nikecloud.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:37.0) Gecko/20100101 Firefox/37.0 FirePHP/0.7.4
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: text/plain; charset=UTF-8
+Referer: http://store.nike.com/cn/zh_cn/pd/air-jordan-future-low-%E8%BF%90%E5%8A%A8%E9%9E%8B/pid-10264996/pgid-10314694
+Content-Length: 138
+Origin: http://store.nike.com
+x-insight: activate
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+    
+postdaat2
+{"events":[{"name":"addToCartSuccessEvent","t":1429189990995}],"g":"48695765-f17e-4a70-cd0c-bf4b8d573032"
+,"t":1429189990995,"vID":"0.9.7"}
+
+
+
+
+    
+
