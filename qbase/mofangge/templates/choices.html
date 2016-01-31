@@ -1,0 +1,26 @@
+{% for question in questions %}
+<problem>
+<p>{{question.content|safe}}</p>
+<multiplechoiceresponse>
+  <choicegroup type="MultipleChoice" label="label text">
+      {% for choice in question.options %}
+    <choice correct="false" name="a">
+      {{ choice|safe }}
+      <!--<choicehint>empty</choicehint>-->
+    </choice>
+      {% endfor %}
+  </choicegroup>
+</multiplechoiceresponse>
+<!--<demandhint>
+  <hint>Hint 1</hint>
+  <hint>Hint 2</hint>
+</demandhint>-->
+
+<solution>
+  <div class="detailed-solution">
+  <p>{{ question.answer }}</p>
+  <p>{{ question.explain }}</p>
+  </div>
+</solution>
+</problem>
+{% endfor %}
